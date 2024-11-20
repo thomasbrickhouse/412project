@@ -40,7 +40,7 @@ def exact_tsp_solution(input_data):
     return f"{min_weight:.4f}\n{' '.join(optimal_path)}"
 
 def tsp_brute_force(graph, list):
-    
+    return
 
 def main():
     example_input = """3 3
