@@ -39,12 +39,17 @@ def exact_tsp_solution(input_data):
     # Return the result
     return f"{min_weight:.4f}\n{' '.join(optimal_path)}"
 
-# Example input as provided in the image
-example_input = """3 3
-a b 3.0
-b c 4.2
-a c 5.4"""
+def tsp_brute_force(graph, list):
+    
 
-# Compute the solution
-solution = exact_tsp_solution(example_input)
-solution
+def main():
+    example_input = """3 3
+    a b 3.0
+    b c 4.2
+    a c 5.4"""
+
+    solution = exact_tsp_solution(example_input)
+
+
+if __name__ == "__main__":
+    main()
