@@ -21,32 +21,17 @@ def generate_complete_graph(num_cities, weight_range=(1, 100)):
     """
     graph = {}
     for i in range(1, num_cities + 1):
-        city_i = f"City_{i}"
-        graph[city_i] = {}
+        city = f"{i}"
+        graph[city] = {}
         for j in range(1, num_cities + 1):
             if i != j:  # No self-loops
-                city_j = f"City_{j}"
-                if city_j not in graph[city_i]:  # Avoid duplicating the edge
+                city_j = f"{j}"
+                if city_j not in graph[city]:  # Avoid duplicating the edge
                     weight = random.randint(*weight_range)
-                    graph[city_i][city_j] = weight
+                    graph[city][city_j] = weight
                     graph[city_j] = graph.get(city_j, {})
-                    graph[city_j][city_i] = weight
+                    graph[city_j][city] = weight
     return graph
-
-
-def print_graph(graph):
-    """
-    Prints the graph in a readable format for debugging.
-    Args:
-        graph (dict): The graph as an adjacency matrix.
-    """
-    print("Graph Representation (Adjacency Matrix):")
-    for city, neighbors in graph.items():
-        neighbor_str = ", ".join(
-            f"{neighbor}: {weight}" for neighbor, weight in neighbors.items()
-        )
-        print(f"{city} -> {neighbor_str}")
-    print()
 
 
 def tsp_approx(graph, timeout):
@@ -87,18 +72,12 @@ def tsp_approx(graph, timeout):
 
     return best_path, best_cost
 
-
-# Generate a graph with 5 cities for debugging (you can increase this)
-num_cities = 5 
+num_cities = 500
 graph = generate_complete_graph(num_cities)
 
-# Print the generated graph
-print_graph(graph)
-
-# Run the TSP approximation algorithm
-timeout = 5  # Run for 5 seconds for quick testing
+timeout = 10
 shortest_path, minimum_cost = tsp_approx(graph, timeout)
 
 # Print the results
-print("\nBest Path:", shortest_path)
+# print("\nBest Path:", shortest_path)
 print("Minimum Cost:", minimum_cost)
