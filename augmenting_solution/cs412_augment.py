@@ -30,32 +30,24 @@ import random
 import heapq
 from collections import defaultdict
 
-import random
-
-def generate_complete_graph_lazy(num_cities, weight_range=(1, 100)):
-    return (
-        (f"City_{i + 1}", f"City_{j + 1}", random.randint(*weight_range))
-        for i in range(num_cities)
-        for j in range(i + 1, num_cities)
-    )
-
-
-# Generate a Complete Graph with Random Weights
+# New generate_complete_graph function with adjacency matrix as a dictionary
 def generate_complete_graph(num_cities, weight_range=(1, 100)):
-    edges = []
-    for i in range(num_cities):
-        for j in range(i + 1, num_cities):
-            weight = random.randint(*weight_range)
-            edges.append((f"City_{i + 1}", f"City_{j + 1}", weight))
-    return edges
+    graph = {}
+    for i in range(1, num_cities + 1):
+        city_i = f"City_{i}"
+        graph[city_i] = {}
+        for j in range(1, num_cities + 1):
+            if i != j:  # No self-loops
+                city_j = f"City_{j}"
+                if city_j not in graph[city_i]:  # Avoid duplicating the edge
+                    weight = random.randint(*weight_range)
+                    graph[city_i][city_j] = weight
+                    graph[city_j] = graph.get(city_j, {})
+                    graph[city_j][city_i] = weight
+    return graph
 
 # Calculate the MST using Prim's Algorithm
-def calculate_mst(edges, num_cities, start_city="City_1"):
-    adj = defaultdict(list)
-    for u, v, w in edges:
-        adj[u].append((v, w))
-        adj[v].append((u, w))
-
+def calculate_mst(graph, num_cities, start_city="City_1"):
     mst = defaultdict(list)
     visited = set()
     min_heap = [(0, start_city, None)]  # (weight, current_node, parent_node)
@@ -70,58 +62,75 @@ def calculate_mst(edges, num_cities, start_city="City_1"):
             mst[parent].append((current, weight))
             mst[current].append((parent, weight))
             total_weight += weight
-        for neighbor, w in adj[current]:
+        # Traverse through the neighbors from the adjacency matrix
+        for neighbor, w in graph[current].items():
             if neighbor not in visited:
                 heapq.heappush(min_heap, (w, neighbor, current))
 
     return mst, total_weight
 
 # Calculate the lower bound for TSP
-def calculate_lower_bound(graph_edges, mst_edges, mst_weight):
+def calculate_lower_bound(graph, mst, mst_weight):
     # Convert MST edges into a set for easy lookup
-    mst_edge_set = set((min(u, v), max(u, v)) for u, v, w in mst_edges)
+    mst_edge_set = set((min(u, v), max(u, v)) for u, v, w in mst_edges(mst))
 
     # Find the lightest edge not in the MST
     lightest_edge_weight = float('inf')
-    for u, v, w in graph_edges:
-        edge = (min(u, v), max(u, v))
-        if edge not in mst_edge_set and w < lightest_edge_weight:
-            lightest_edge_weight = w
+    for city, neighbors in graph.items():
+        for neighbor, weight in neighbors.items():
+            edge = (min(city, neighbor), max(city, neighbor))
+            if edge not in mst_edge_set and weight < lightest_edge_weight:
+                lightest_edge_weight = weight
 
     return mst_weight + lightest_edge_weight
 
+# Helper function to extract edges from the MST dictionary
+def mst_edges(mst):
+    mst_edges = []
+    for city, connections in mst.items():
+        for neighbor, weight in connections:
+            if city < neighbor:  # To ensure each edge is printed once
+                mst_edges.append((city, neighbor, weight))
+    return mst_edges
+
 # Main function
 def main():
-    
-    num_cities = 5
-    weight_range = (10, 50)
-    edge_generator = generate_complete_graph_lazy(num_cities, weight_range)
+    # Readable Format
 
-    for edge in edge_generator:
-        print(edge)
+    # num_cities = 5
+    # weight_range = (10, 50)
 
-    # # Generate the graph
-    # graph_edges = generate_complete_graph(num_cities, weight_range)
-    # print("Graph Edges (City1, City2, Weight):")
-    # for edge in graph_edges:
-    #     print(edge)
+    # # Generate the graph using the new function
+    # graph = generate_complete_graph(num_cities, weight_range)
+    # print("Graph (Adjacency Matrix):")
+    # for city, neighbors in graph.items():
+    #     print(f"{city}: {neighbors}")
 
     # # Compute the MST
-    # mst, mst_weight = calculate_mst(graph_edges, num_cities)
+    # mst, mst_weight = calculate_mst(graph, num_cities)
     # print("\nMinimum Spanning Tree Edges:")
-    # mst_edges = []
-    # for city, connections in mst.items():
-    #     for neighbor, weight in connections:
-    #         if city < neighbor:  # To ensure each edge is printed once
-    #             mst_edges.append((city, neighbor, weight))
-    # mst_edges.sort()
-    # for edge in mst_edges:
+    # mst_edges_result = mst_edges(mst)
+    # for edge in mst_edges_result:
     #     print(f"({edge[0]}, {edge[1]}, {edge[2]})")
     # print(f"Total Weight of MST: {mst_weight}")
 
     # # Compute the lower bound for TSP
-    # lower_bound = calculate_lower_bound(graph_edges, mst_edges, mst_weight)
+    # lower_bound = calculate_lower_bound(graph, mst, mst_weight)
     # print(f"Lower Bound for TSP: MST ({mst_weight}) + Lightest Extra Edge ({lower_bound - mst_weight}) = {lower_bound}")
+
+    # Just the Lower Bound Format
+    
+    num_cities = 5
+    weight_range = (10, 50)
+
+    # Generate the graph using the new function
+    graph = generate_complete_graph(num_cities, weight_range)
+
+    # Compute the MST
+    mst, mst_weight = calculate_mst(graph, num_cities)
+
+    # Compute the lower bound for TSP
+    lower_bound = calculate_lower_bound(graph, mst, mst_weight)
 
 if __name__ == "__main__":
     main()
