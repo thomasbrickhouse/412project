@@ -30,6 +30,16 @@ import random
 import heapq
 from collections import defaultdict
 
+import random
+
+def generate_complete_graph_lazy(num_cities, weight_range=(1, 100)):
+    return (
+        (f"City_{i + 1}", f"City_{j + 1}", random.randint(*weight_range))
+        for i in range(num_cities)
+        for j in range(i + 1, num_cities)
+    )
+
+
 # Generate a Complete Graph with Random Weights
 def generate_complete_graph(num_cities, weight_range=(1, 100)):
     edges = []
@@ -82,31 +92,36 @@ def calculate_lower_bound(graph_edges, mst_edges, mst_weight):
 
 # Main function
 def main():
+    
     num_cities = 5
     weight_range = (10, 50)
+    edge_generator = generate_complete_graph_lazy(num_cities, weight_range)
 
-    # Generate the graph
-    graph_edges = generate_complete_graph(num_cities, weight_range)
-    print("Graph Edges (City1, City2, Weight):")
-    for edge in graph_edges:
+    for edge in edge_generator:
         print(edge)
 
-    # Compute the MST
-    mst, mst_weight = calculate_mst(graph_edges, num_cities)
-    print("\nMinimum Spanning Tree Edges:")
-    mst_edges = []
-    for city, connections in mst.items():
-        for neighbor, weight in connections:
-            if city < neighbor:  # To ensure each edge is printed once
-                mst_edges.append((city, neighbor, weight))
-    mst_edges.sort()
-    for edge in mst_edges:
-        print(f"({edge[0]}, {edge[1]}, {edge[2]})")
-    print(f"Total Weight of MST: {mst_weight}")
+    # # Generate the graph
+    # graph_edges = generate_complete_graph(num_cities, weight_range)
+    # print("Graph Edges (City1, City2, Weight):")
+    # for edge in graph_edges:
+    #     print(edge)
 
-    # Compute the lower bound for TSP
-    lower_bound = calculate_lower_bound(graph_edges, mst_edges, mst_weight)
-    print(f"Lower Bound for TSP: MST ({mst_weight}) + Lightest Extra Edge ({lower_bound - mst_weight}) = {lower_bound}")
+    # # Compute the MST
+    # mst, mst_weight = calculate_mst(graph_edges, num_cities)
+    # print("\nMinimum Spanning Tree Edges:")
+    # mst_edges = []
+    # for city, connections in mst.items():
+    #     for neighbor, weight in connections:
+    #         if city < neighbor:  # To ensure each edge is printed once
+    #             mst_edges.append((city, neighbor, weight))
+    # mst_edges.sort()
+    # for edge in mst_edges:
+    #     print(f"({edge[0]}, {edge[1]}, {edge[2]})")
+    # print(f"Total Weight of MST: {mst_weight}")
+
+    # # Compute the lower bound for TSP
+    # lower_bound = calculate_lower_bound(graph_edges, mst_edges, mst_weight)
+    # print(f"Lower Bound for TSP: MST ({mst_weight}) + Lightest Extra Edge ({lower_bound - mst_weight}) = {lower_bound}")
 
 if __name__ == "__main__":
     main()
