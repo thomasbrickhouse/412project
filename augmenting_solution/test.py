@@ -4,8 +4,6 @@ from collections import defaultdict
 
 # Generate a Complete Graph with Random Weights
 def generate_complete_graph(num_cities, weight_range=(1, 100)):
-    if num_cities < 2:
-        raise ValueError("The graph must have at least 2 cities.")
     edges = []
     for i in range(num_cities):
         for j in range(i + 1, num_cities):
@@ -52,10 +50,6 @@ def calculate_lower_bound(graph_edges, mst_edges, mst_weight):
         if edge not in mst_edge_set and w < lightest_edge_weight:
             lightest_edge_weight = w
 
-    # If no additional edge is found, just return the MST weight
-    if lightest_edge_weight == float('inf'):
-        return mst_weight
-
     return mst_weight + lightest_edge_weight
 
 # Main function
@@ -84,7 +78,7 @@ def main():
 
     # Compute the lower bound for TSP
     lower_bound = calculate_lower_bound(graph_edges, mst_edges, mst_weight)
-    print(f"Lower Bound for TSP (MST + Lightest Extra Edge): {lower_bound}")
+    print(f"Lower Bound for TSP: MST ({mst_weight}) + Lightest Extra Edge ({lower_bound - mst_weight}) = {lower_bound}")
 
 if __name__ == "__main__":
     main()
