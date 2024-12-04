@@ -3,6 +3,27 @@ from collections import defaultdict
 import heapq
 import random
 
+# "Given a list of cities and the distances between each pair of cities, 
+# what is the shortest possible route that visits each city exactly once and returns to the origin city?"
+
+# TSP can be modeled as an undirected weighted graph, such that cities are the graph's vertices, paths are the graph's edges, 
+# and a path's distance is the edge's weight. It is a minimization problem starting and finishing at a specified vertex after 
+# having visited each other vertex exactly once. Often, the model is a complete graph (i.e., each pair of vertices is connected by an edge). 
+# If no path exists between two cities, then adding a sufficiently long edge will complete the graph without affecting the optimal tour.
+
+# run minimum spanning tree on same inputs and compare for analysis
+# MST = Lower bound helps to estimate final answer between approximate
+
+# Heres what I need to present:
+    # why MST is a good lower bound for TSP
+    # convince Malloy that MST is polynomial time computable
+    # showcase the lower bound, optimal, approximate exist --> test cases
+    # run all of these on something the optimal cannot complete --> plot on graph
+
+    # complete graph and generate random weights 
+    # 10 different graphs
+    # google mat.plot.lib
+
 def generate_complete_graph_test_case(num_vertices, weight_range=(1.0, 100.0)):
     vertices = [chr(97 + i) for i in range(num_vertices)]  # Generate vertices 'a', 'b', 'c', etc.
     edges = []
