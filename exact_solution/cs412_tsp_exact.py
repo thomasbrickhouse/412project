@@ -40,5 +40,7 @@ for perm in all_permutations:
         optimal_route = perm + ('a',)
 
 # Print the optimal route and its cost
-print(f"Optimal Route: {optimal_route}")
+print(f"Cities = {cities}")
+print(f"Distances = {distances}")
 print(f"Total Cost: {min_cost}")
+print(f"Optimal Route: {optimal_route}")
