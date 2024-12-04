@@ -1,1 +1,0 @@
-# randomly seelct a node to start

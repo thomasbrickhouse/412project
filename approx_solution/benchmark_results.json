@@ -1,0 +1,72 @@
+[
+    {
+        "test_case": "test_graph1",
+        "exact_cost": 12.600000000000001,
+        "approx_cost": 12.600000000000001,
+        "exact_runtime": 0.12601590156555176,
+        "approx_runtime": 2.09808349609375e-05
+    },
+    {
+        "test_case": "test_graph2",
+        "exact_cost": 241.1,
+        "approx_cost": 241.1,
+        "exact_runtime": 0.06768918037414551,
+        "approx_runtime": 2.9325485229492188e-05
+    },
+    {
+        "test_case": "test_graph3",
+        "exact_cost": 149.7,
+        "approx_cost": 149.70000000000002,
+        "exact_runtime": 0.48569512367248535,
+        "approx_runtime": 3.5762786865234375e-05
+    },
+    {
+        "test_case": "test_graph4",
+        "exact_cost": 341.29999999999995,
+        "approx_cost": 386.0,
+        "exact_runtime": 0.5429649353027344,
+        "approx_runtime": 3.528594970703125e-05
+    },
+    {
+        "test_case": "test_graph5",
+        "exact_cost": null,
+        "approx_cost": 310.8,
+        "exact_runtime": "Timeout",
+        "approx_runtime": 6.29425048828125e-05
+    },
+    {
+        "test_case": "test_graph6",
+        "exact_cost": null,
+        "approx_cost": 334.5,
+        "exact_runtime": "Timeout",
+        "approx_runtime": 6.699562072753906e-05
+    },
+    {
+        "test_case": "test_graph7",
+        "exact_cost": null,
+        "approx_cost": 340.49999999999994,
+        "exact_runtime": "Timeout",
+        "approx_runtime": 8.0108642578125e-05
+    },
+    {
+        "test_case": "test_graph8",
+        "exact_cost": null,
+        "approx_cost": 514.6,
+        "exact_runtime": "Timeout",
+        "approx_runtime": 0.0008461475372314453
+    },
+    {
+        "test_case": "test_graph9",
+        "exact_cost": null,
+        "approx_cost": 1118.5000000000007,
+        "exact_runtime": "Timeout",
+        "approx_runtime": 0.01959991455078125
+    },
+    {
+        "test_case": "test_graph10",
+        "exact_cost": null,
+        "approx_cost": 1739.700000000003,
+        "exact_runtime": "Timeout",
+        "approx_runtime": 0.09010910987854004
+    }
+]
