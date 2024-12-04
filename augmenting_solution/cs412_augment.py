@@ -118,8 +118,8 @@ def main():
     # lower_bound = calculate_lower_bound(graph, mst, mst_weight)
     # print(f"Lower Bound for TSP: MST ({mst_weight}) + Lightest Extra Edge ({lower_bound - mst_weight}) = {lower_bound}")
 
-    # Just the Lower Bound Format
-    
+    # Just the Important Stuff
+
     num_cities = 5
     weight_range = (10, 50)
 
@@ -131,6 +131,7 @@ def main():
 
     # Compute the lower bound for TSP
     lower_bound = calculate_lower_bound(graph, mst, mst_weight)
+    # print(f"Lower Bound for this graph: {lower_bound}")
 
 if __name__ == "__main__":
     main()
