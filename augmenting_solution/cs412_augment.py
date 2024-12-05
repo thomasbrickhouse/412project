@@ -16,7 +16,7 @@ import random
 
 # Heres what I need to present:
     # why MST is a good lower bound for TSP
-    # convince Malloy that MST is polynomial time computable
+    # convince Molloy that MST is polynomial time computable
     # showcase the lower bound, optimal, approximate exist --> test cases
     # run all of these on something the optimal cannot complete --> plot on graph
 
@@ -85,7 +85,7 @@ def mst_edges(mst):
                 edges.append((city, neighbor, weight))
     return edges
 
-# Calculate the lower bound for TSP
+# Calculate the lower bound by adding the MST weight to the lightest edge outside of it
 def calculate_lower_bound(graph, mst, mst_weight):
     mst_edge_set = set((min(u, v), max(u, v)) for u, v, w in mst_edges(mst))
     lightest_edge_weight = float('inf')
