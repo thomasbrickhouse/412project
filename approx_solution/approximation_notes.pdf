@@ -1,13 +1,13 @@
 My approximate solution runs in polynomial time, Ο(𝑘 •  V²). 
 
-This is becuase the function one_tsp(graph) has a runtime of Ο(V²). The outer while loop runs 
+This is because the function one_tsp(graph) has a runtime of Ο(V²). The outer while loop runs 
 V - 1 times, where V is the number of nodes. The inner operation of finding the next node involves 
 iterating through unvisited nodes, which takes O(V). The tsp_approx(graph) function runs multiple 
-iterations of one_tsp, each taking O(V^2) time, until the timeout is reached. The total number of 
+iterations of one_tsp, each taking O(V^2) time until the timeout is reached. The total number of 
 runs, 𝑘, is determined by how many of these runs can fit into the given timeout. 
 
 My approach was as follows:
 1.  Randomly select a node to start
-2.  Perform a greedy approach to traverse the complete graph. The output will be the shortest.
+2.  Perform a greedy approach to traverse the complete graph. Check to see if it is a new low.
 3.  Repeat the process multiple times to get different shortest paths and minimum costs
-4.  Stop running after a certain amount of time to get the best shortest path and minimum cost
+4.  Stop running after a certain amount of time to get the best shortest path and minimum cost.

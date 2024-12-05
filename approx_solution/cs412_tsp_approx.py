@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     graph = parse_input(input_data)
 
-    timeout = 100 # seconds to run the greedy algorithm
+    timeout = 1 # seconds to run the greedy algorithm
     best_path, best_cost = tsp_approx(graph, timeout)
 
     print(f"{best_cost:.4f}")
