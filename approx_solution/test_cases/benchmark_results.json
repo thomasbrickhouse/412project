@@ -4,7 +4,7 @@
         "num_vertices": 3,
         "exact_cost": 12.600000000000001,
         "approx_cost": 12.600000000000001,
-        "exact_runtime": 1.1920928955078125e-05,
+        "exact_runtime": 2.6941299438476562e-05,
         "approx_runtime": 1.1920928955078125e-05
     },
     {
@@ -12,71 +12,71 @@
         "num_vertices": 8,
         "exact_cost": 241.1,
         "approx_cost": 336.3,
-        "exact_runtime": 0.004601001739501953,
-        "approx_runtime": 1.4781951904296875e-05
+        "exact_runtime": 0.0045070648193359375,
+        "approx_runtime": 1.3828277587890625e-05
     },
     {
         "test_case": "test_graph3",
         "num_vertices": 10,
         "exact_cost": 149.7,
-        "approx_cost": 149.70000000000002,
-        "exact_runtime": 0.4394669532775879,
-        "approx_runtime": 4.482269287109375e-05
+        "approx_cost": 194.7,
+        "exact_runtime": 0.3787398338317871,
+        "approx_runtime": 6.508827209472656e-05
     },
     {
         "test_case": "test_graph4",
         "num_vertices": 12,
         "exact_cost": 329.29999999999995,
         "approx_cost": 370.5,
-        "exact_runtime": 53.08936786651611,
-        "approx_runtime": 0.005897998809814453
+        "exact_runtime": 51.59788918495178,
+        "approx_runtime": 0.005196809768676758
     },
     {
         "test_case": "test_graph5",
         "num_vertices": 15,
         "exact_cost": null,
-        "approx_cost": 369.4,
+        "approx_cost": 307.2,
         "exact_runtime": null,
-        "approx_runtime": 2.5987625122070312e-05
+        "approx_runtime": 3.409385681152344e-05
     },
     {
         "test_case": "test_graph6",
         "num_vertices": 18,
         "exact_cost": null,
-        "approx_cost": 307.5,
+        "approx_cost": 334.5,
         "exact_runtime": null,
-        "approx_runtime": 3.600120544433594e-05
+        "approx_runtime": 4.792213439941406e-05
     },
     {
         "test_case": "test_graph7",
         "num_vertices": 20,
         "exact_cost": null,
-        "approx_cost": 341.79999999999995,
+        "approx_cost": 331.3,
         "exact_runtime": null,
-        "approx_runtime": 3.4809112548828125e-05
+        "approx_runtime": 3.981590270996094e-05
     },
     {
         "test_case": "test_graph8",
         "num_vertices": 100,
         "exact_cost": null,
-        "approx_cost": 625.0,
+        "approx_cost": 523.6,
         "exact_runtime": null,
-        "approx_runtime": 0.0006711483001708984
+        "approx_runtime": 0.0008711814880371094
     },
     {
         "test_case": "test_graph9",
         "num_vertices": 500,
         "exact_cost": null,
-        "approx_cost": 1131.4000000000005,
+        "approx_cost": 1132.5000000000005,
         "exact_runtime": null,
-        "approx_runtime": 0.034349918365478516
+        "approx_runtime": 0.019932270050048828
     },
     {
         "test_case": "test_graph10",
         "num_vertices": 1000,
         "exact_cost": null,
-        "approx_cost": 1647.6000000000013,
+        "approx_cost": 1639.1000000000045,
         "exact_runtime": null,
-        "approx_runtime": 0.08626484870910645
+        "approx_runtime": 0.08886408805847168
     }
 ]

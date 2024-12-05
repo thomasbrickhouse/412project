@@ -62,13 +62,12 @@ def tsp_approx(graph, timeout=None, single_iteration=False):
 
     return best_path, best_cost
 
-
 if __name__ == "__main__":
     input_data = sys.stdin.read()
 
     graph = parse_input(input_data)
 
-    timeout = 1
+    timeout = 100 # seconds to run the greedy algorithm
     best_path, best_cost = tsp_approx(graph, timeout)
 
     print(f"{best_cost:.4f}")

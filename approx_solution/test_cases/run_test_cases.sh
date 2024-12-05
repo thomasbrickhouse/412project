@@ -6,7 +6,7 @@ test_cases=("test_graph1" "test_graph2" "test_graph3" "test_graph4" "test_graph5
 # 1 : 3 Vertex Graph
 # 2 : 8 Vertex Graph
 # 3 : 10 Vertex Graph
-# 4 : 10 Vertex Graph
+# 4 : 12 Vertex Graph
 # 5 : 15 Vertex Graph
 # 6 : 18 Vertex Graph
 # 7 : 20 Vertex Graph
