@@ -98,37 +98,37 @@ def calculate_lower_bound(graph, mst, mst_weight):
 
 # Main function
 def main():
-    # # Read the number of vertices (n) and edges (m)
-    # n, m = map(int, input().strip().split())
+    # Read the number of vertices (n) and edges (m)
+    n, m = map(int, input().strip().split())
     
-    # # Initialize graph as an adjacency list
-    # graph = defaultdict(dict)
+    # Initialize graph as an adjacency list
+    graph = defaultdict(dict)
     
-    # # Read each edge
-    # for _ in range(m):
-    #     u, v, w = input().strip().split()
-    #     w = float(w)
-    #     graph[u][v] = w
-    #     graph[v][u] = w  # Undirected graph
+    # Read each edge
+    for _ in range(m):
+        u, v, w = input().strip().split()
+        w = float(w)
+        graph[u][v] = w
+        graph[v][u] = w  # Undirected graph
     
-    # graph, num_cities = graph, n
+    graph, num_cities = graph, n
 
-    # # Compute the MST
-    # mst, mst_weight = calculate_mst(graph, num_cities)
+    # Compute the MST
+    mst, mst_weight = calculate_mst(graph, num_cities)
 
-    # # Compute the lower bound for TSP
-    # lower_bound = calculate_lower_bound(graph, mst, mst_weight)
+    # Compute the lower bound for TSP
+    lower_bound = calculate_lower_bound(graph, mst, mst_weight)
 
-    # # Output the results
-    # print(f"Lower bound cost: {lower_bound:.4f}")
+    # Output the results
+    print(f"Lower bound cost: {lower_bound:.4f}")
 
-    # Parameters
-    num_vertices = 3
-    weight_range = (1.0, 50.0)
+    # # Parameters
+    # num_vertices = 5
+    # weight_range = (1.0, 50.0)
 
-    # Generate the test case
-    test_case = generate_complete_graph_test_case(num_vertices, weight_range)
-    print(test_case)
+    # # Generate the test case
+    # test_case = generate_complete_graph_test_case(num_vertices, weight_range)
+    # print(test_case)
 
 
 if __name__ == "__main__":
