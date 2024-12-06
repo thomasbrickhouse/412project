@@ -1,0 +1,62 @@
+[
+    {
+        "test_case": "testCase1",
+        "num_vertices": 3,
+        "exact_cost": 129.6,
+        "exact_runtime": 1.5020370483398438e-05
+    },
+    {
+        "test_case": "testCase2",
+        "num_vertices": 4,
+        "exact_cost": 150.2,
+        "exact_runtime": 1.0967254638671875e-05
+    },
+    {
+        "test_case": "testCase3",
+        "num_vertices": 5,
+        "exact_cost": 155.0,
+        "exact_runtime": 6.031990051269531e-05
+    },
+    {
+        "test_case": "testCase4",
+        "num_vertices": 8,
+        "exact_cost": 307.7,
+        "exact_runtime": 0.006518125534057617
+    },
+    {
+        "test_case": "testCase5",
+        "num_vertices": 10,
+        "exact_cost": 275.5,
+        "exact_runtime": 0.36045289039611816
+    },
+    {
+        "test_case": "testCase6",
+        "num_vertices": 25,
+        "exact_cost": null,
+        "exact_runtime": null
+    },
+    {
+        "test_case": "testCase7",
+        "num_vertices": 50,
+        "exact_cost": null,
+        "exact_runtime": null
+    },
+    {
+        "test_case": "testCase8",
+        "num_vertices": 100,
+        "exact_cost": null,
+        "exact_runtime": null
+    },
+    {
+        "test_case": "testCase9",
+        "num_vertices": 500,
+        "exact_cost": null,
+        "exact_runtime": null
+    },
+    {
+        "test_case": "testCase10",
+        "num_vertices": 1000,
+        "exact_cost": null,
+        "exact_runtime": null
+    }
+]

@@ -1,46 +1,64 @@
-import itertools
+from itertools import permutations
+import sys
 
-# Define the cities and distances
-cities = ['a', 'b', 'c', 'd']
-distances = {
-    ('a', 'b'): 20,
-    ('a', 'c'): 42,
-    ('a', 'd'): 35,
-    ('b', 'c'): 30,
-    ('b', 'd'): 34,
-    ('c', 'd'): 12
-}
 
-# Function to calculate the total cost of a route
-def calculate_cost(route):
-    total_cost = 0
-    n = len(route)
-    for i in range(n):
-        current_city = route[i]
-        next_city = route[(i + 1) % n]  # Wrap around to the start of the route
-        # Look up the distance in both directions
-        if (current_city, next_city) in distances:
-            total_cost += distances[(current_city, next_city)]
-        else:
-            total_cost += distances[(next_city, current_city)]
-    return total_cost
+def parse_input(input_string):
+    lines = input_string.strip().split("\n")
+    num_nodes, num_edges = map(int, lines[0].split())
+    graph = {}
 
-# Generate all permutations of the cities
-all_permutations = itertools.permutations(cities)
+    for line in lines[1:]:
+        node1, node2, weight = line.split()
+        weight = float(weight)
+        if node1 not in graph:
+            graph[node1] = {}
+        if node2 not in graph:
+            graph[node2] = {}
+        graph[node1][node2] = weight
+        graph[node2][node1] = weight
 
-# Initialize variables to track the minimum cost and corresponding route
-min_cost = float('inf')
-optimal_route = None
+    return graph
 
-# Iterate over all permutations and calculate costs
-for perm in all_permutations:
-    cost = calculate_cost(perm)
-    if cost < min_cost:
-        min_cost = cost
-        optimal_route = perm + ('a',)
+def tsp_exact(graph):
+    nodes = list(graph.keys())
+    if len(nodes) < 2:
+        return nodes, 0.0  # Handle trivial cases with 0 or 1 node.
 
-# Print the optimal route and its cost
-print(f"Cities = {cities}")
-print(f"Distances = {distances}")
-print(f"Total Cost: {min_cost}")
-print(f"Optimal Route: {optimal_route}")
+    best_path = None
+    min_cost = float('inf')
+
+    # Generate all permutations of nodes, treating the first node as the start
+    start_node = nodes[0]
+    other_nodes = nodes[1:]  # All nodes except the start
+    for perm in permutations(other_nodes):
+        path = [start_node] + list(perm) + [start_node]  # Complete path
+
+        # Calculate the total cost for this permutation
+        current_cost = 0
+        valid = True
+        for i in range(len(path) - 1):
+            if path[i + 1] in graph[path[i]]:
+                current_cost += graph[path[i]][path[i + 1]]
+            else:
+                valid = False
+                break
+
+        # Update the best path and cost
+        if valid and current_cost < min_cost:
+            min_cost = current_cost
+            best_path = path
+
+    return best_path, min_cost
+
+def main():
+    input_data = sys.stdin.read()
+
+    graph = parse_input(input_data)
+
+    best_path, min_cost = tsp_exact(graph)
+
+    print(f"{min_cost:.4f}")
+    print(" ".join(best_path))
+
+if __name__ == "__main__":
+    main()

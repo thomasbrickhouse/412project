@@ -3,7 +3,7 @@ import sys
 
 
 def generate_complete_graph(num_vertices, weight_range=(1.0, 100.0)):
-    file_name = "test_graph5"
+    file_name = "testCase10"
     vertices = [chr(97 + i) if i < 26 else f"v{i}" for i in range(num_vertices)]
 
     with open(file_name, "w") as file:
